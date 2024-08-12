@@ -1,16 +1,16 @@
 import React from "react";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ setCurrentPage }) => {
   const total = 25000;
   const token = false;
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <p className="logo" onClick={() => setCurrentPage("home")}>
           Pizzería Mamma Mia!
-        </a>
+        </p>
         <button
           className="navbar-toggler"
           type="button"
@@ -25,41 +25,59 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <button
+                className="nav-link"
+                onClick={() => setCurrentPage("home")}
+              >
                 🍕 Home
-              </a>
+              </button>
             </li>
             {token ? (
               <>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <button
+                    className="nav-link"
+                    onClick={() => setCurrentPage("profile")}
+                  >
                     🔓 Profile
-                  </a>
+                  </button>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <button
+                    className="nav-link"
+                    onClick={() => setCurrentPage("logout")}
+                  >
                     🔒 Logout
-                  </a>
+                  </button>
                 </li>
               </>
             ) : (
               <>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <button
+                    className="nav-link"
+                    onClick={() => setCurrentPage("login")}
+                  >
                     🔐 Login
-                  </a>
+                  </button>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <button
+                    className="nav-link"
+                    onClick={() => setCurrentPage("register")}
+                  >
                     🔐 Register
-                  </a>
+                  </button>
                 </li>
               </>
             )}
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <button
+                className="nav-link"
+                onClick={() => setCurrentPage("cart")}
+              >
                 🛒 Total: ${total.toLocaleString()}
-              </a>
+              </button>
             </li>
           </ul>
         </div>
