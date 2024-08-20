@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Home from "./components/Home/Home";
+import Cart from "./components/CartPizzas/Cartpizzas";
 import Footer from "./components/Footer/Footer";
 
 const App = () => {
@@ -16,6 +17,8 @@ const App = () => {
         return <Login />;
       case "register":
         return <Register />;
+      case "cart":
+        return <Cart />;
       default:
         return <Home />;
     }
