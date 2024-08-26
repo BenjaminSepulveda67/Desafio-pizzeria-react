@@ -2,7 +2,7 @@ import React from "react";
 import "./Home.css";
 import Header from "../Header/Header";
 import CardPizza from "../CardPizza/Cardpizza";
-import pizzas from "../Pizzas/pizzas"; // Importa el array de pizzas
+import pizzas from "../Pizzas/pizzas"; 
 
 const Home = () => {
   return (
