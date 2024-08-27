@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Header from "../Header/Header";
 import CardPizza from "../CardPizza/Cardpizza";
-import pizzas from "../Pizzas/pizzas"; 
+//import pizzas from "../Pizzas/pizzas"; 
 
-const Home = () => {
+function Home () {
+
+  const [pizzas, setPizzas] = useState ([])
+
+  const getPizzas = async () => {
+    const respuesta = await fetch("http://localhost:5000/api/pizzas")
+    const pizzas = await respuesta.json ()
+
+    setPizzas(pizzas)
+  }
+
+  useEffect (() => {
+    getPizzas()
+  }, [])
+
   return (
     <div>
       <Header />
