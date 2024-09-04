@@ -1,16 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Importa el componente Link
 import "./Navbar.css";
 
-const Navbar = ({ setCurrentPage }) => {
+const Navbar = () => {
   const total = 25000;
   const token = false;
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-dark">
       <div className="container-fluid">
-        <p className="logo" onClick={() => setCurrentPage("home")}>
+        <Link to="/" className="logo">
+          {" "}
+          {/* Usa Link en lugar de onClick */}
           Pizzería Mamma Mia!
-        </p>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -25,59 +28,53 @@ const Navbar = ({ setCurrentPage }) => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <button
-                className="nav-link"
-                onClick={() => setCurrentPage("home")}
-              >
+              <Link to="/" className="nav-link">
+                {" "}
+                {/* Reemplaza setCurrentPage con Link */}
                 🍕 Home
-              </button>
+              </Link>
             </li>
             {token ? (
               <>
                 <li className="nav-item">
-                  <button
-                    className="nav-link"
-                    onClick={() => setCurrentPage("profile")}
-                  >
+                  <Link to="/profile" className="nav-link">
+                    {" "}
+                    {/* Link para Profile */}
                     🔓 Profile
-                  </button>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <button
-                    className="nav-link"
-                    onClick={() => setCurrentPage("logout")}
-                  >
+                  <Link to="/logout" className="nav-link">
+                    {" "}
+                    {/* Link para Logout */}
                     🔒 Logout
-                  </button>
+                  </Link>
                 </li>
               </>
             ) : (
               <>
                 <li className="nav-item">
-                  <button
-                    className="nav-link"
-                    onClick={() => setCurrentPage("login")}
-                  >
+                  <Link to="/login" className="nav-link">
+                    {" "}
+                    {/* Link para Login */}
                     🔐 Login
-                  </button>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <button
-                    className="nav-link"
-                    onClick={() => setCurrentPage("register")}
-                  >
+                  <Link to="/register" className="nav-link">
+                    {" "}
+                    {/* Link para Register */}
                     🔐 Register
-                  </button>
+                  </Link>
                 </li>
               </>
             )}
             <li className="nav-item">
-              <button
-                className="nav-link"
-                onClick={() => setCurrentPage("cart")}
-              >
+              <Link to="/cart" className="nav-link">
+                {" "}
+                {/* Link para Cart */}
                 🛒 Total: ${total.toLocaleString()}
-              </button>
+              </Link>
             </li>
           </ul>
         </div>

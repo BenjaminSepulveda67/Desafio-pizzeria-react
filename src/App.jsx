@@ -1,38 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-//import Login from "./components/Login/Login";
-//import Register from "./components/Register/Register";
-import Home from "./components/Home/Home";
-//import Cart from "./components/CartPizzas/Cartpizzas";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Home from "./pages/Home";
+import Cart from "./pages/Pizza";
 import Footer from "./components/Footer/Footer";
-import Pizza from "./components/Pizza/Pizza";
+import Pizza from "./pages/Pizza";
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState("home");
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case "home":
-        return <Home />;
-      case "login":
-        return <Login />;
-      case "register":
-        return <Register />;
-      case "cart":
-        return <Cart />;
-      default:
-        return <Home />;
-      case "pizza":
-        return <Pizza />;
-    }
-  };
-
   return (
-    <div>
-      <Navbar setCurrentPage={setCurrentPage} />
-      {renderPage()}
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/pizza/p001" element={<Pizza />} />
+      </Routes>
       <Footer />
-    </div>
+    </Router>
   );
 };
 

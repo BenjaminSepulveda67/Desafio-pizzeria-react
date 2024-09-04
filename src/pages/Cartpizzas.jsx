@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import pizzas from "../Pizzas/pizzas";
-import "./Cartpizzas.css";
+import "../css/Cartpizzas.css";
 
 const Cart = () => {
   const initialCart = pizzas.map((pizza) => ({ ...pizza, quantity: 1 })); // Inicializa con cantidad 1

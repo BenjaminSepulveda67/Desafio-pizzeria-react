@@ -1,25 +1,28 @@
 import React, { useState } from "react";
-import "./Login.css";
+import "../css/Register.css";
 
-const Login = () => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password.length < 6) {
       setError("El password debe tener al menos 6 caracteres.");
+    } else if (password !== confirmPassword) {
+      setError("Las contraseñas no coinciden.");
     } else {
       setError("");
-      alert("Login exitoso!");
+      alert("Registro exitoso!");
     }
   };
 
   return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Login</h2>
+    <div className="register-container">
+      <form className="register-form" onSubmit={handleSubmit}>
+        <h2>Registro</h2>
         <input
           type="email"
           placeholder="Email"
@@ -34,11 +37,18 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Ingresar</button>
-        {error && <p className="login-error">{error}</p>}
+        <input
+          type="password"
+          placeholder="Confirmar Contraseña"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Registrarse</button>
+        {error && <p className="register-error">{error}</p>}
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Register;
